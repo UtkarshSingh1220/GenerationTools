@@ -1,0 +1,41 @@
+	@Autowired
+	private {{VONAME}}Mapper {{VONAME_CAMELCASE}}MapperAutowired;
+
+	private static {{VONAME}}Mapper {{VONAME_CAMELCASE}}Mapper;
+
+
+	@PostConstruct
+	private void initStaticDao() {
+		{{VONAME_CAMELCASE}}Mapper = this.{{VONAME_CAMELCASE}}MapperAutowired;
+	}
+
+	public static {{VONAME}} map{{VONAME}}({{VONAME}}Model {{VONAME_CAMELCASE}}Model) {
+		{{VONAME}} {{VONAME_CAMELCASE}} = {{VONAME_CAMELCASE}}Mapper.map{{VONAME}}({{VONAME_CAMELCASE}}Model);
+		return {{VONAME_CAMELCASE}};
+	}
+
+	public static {{VONAME}}Model map{{VONAME}}Model({{VONAME}} {{VONAME_CAMELCASE}}) {
+		{{VONAME}}Model {{VONAME_CAMELCASE}}Model = {{VONAME_CAMELCASE}}Mapper.map{{VONAME}}Model({{VONAME_CAMELCASE}});
+		return {{VONAME_CAMELCASE}}Model;
+	}
+
+	public static List<{{VONAME}}> map{{VONAME}}VOs(List<{{VONAME}}Model> {{VONAME_CAMELCASE}}Models) {
+		List<{{VONAME}}> {{VONAME_CAMELCASE}}VOs = new ArrayList<>();
+		if (CollectionUtils.isNotEmpty({{VONAME_CAMELCASE}}Models)) {
+			for ({{VONAME}}Model {{VONAME_CAMELCASE}}Model : {{VONAME_CAMELCASE}}Models) {
+				{{VONAME_CAMELCASE}}VOs.add(map{{VONAME}}({{VONAME_CAMELCASE}}Model));
+			}
+		}
+		return {{VONAME_CAMELCASE}}VOs;
+	}
+
+	public static Page<{{VONAME}}> map{{VONAME}}Pages(Page<{{VONAME}}Model> {{VONAME_CAMELCASE}}sModelPage) {
+		List<{{VONAME}}> {{VONAME_CAMELCASE}}VOs = new ArrayList<>();
+		if (CollectionUtils.isNotEmpty({{VONAME_CAMELCASE}}sModelPage.getContent())) {
+			for ({{VONAME}}Model {{VONAME_CAMELCASE}}Model : {{VONAME_CAMELCASE}}sModelPage.getContent()) {
+				{{VONAME_CAMELCASE}}VOs.add(map{{VONAME}}({{VONAME_CAMELCASE}}Model));
+			}
+		}
+		return new PageImpl<{{VONAME}}>({{VONAME_CAMELCASE}}VOs, {{VONAME_CAMELCASE}}sModelPage.getPageable(),
+				{{VONAME_CAMELCASE}}sModelPage.getTotalElements());
+	}

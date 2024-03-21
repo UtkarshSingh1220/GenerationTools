@@ -1,0 +1,41 @@
+	@Autowired
+	private VitalMarkerMapper vitalMarkerMapperAutowired;
+
+	private static VitalMarkerMapper vitalMarkerMapper;
+
+
+	@PostConstruct
+	private void initStaticDao() {
+		vitalMarkerMapper = this.vitalMarkerMapperAutowired;
+	}
+
+	public static VitalMarker mapVitalMarker(VitalMarkerModel vitalMarkerModel) {
+		VitalMarker vitalMarker = vitalMarkerMapper.mapVitalMarker(vitalMarkerModel);
+		return vitalMarker;
+	}
+
+	public static VitalMarkerModel mapVitalMarkerModel(VitalMarker vitalMarker) {
+		VitalMarkerModel vitalMarkerModel = vitalMarkerMapper.mapVitalMarkerModel(vitalMarker);
+		return vitalMarkerModel;
+	}
+
+	public static List<VitalMarker> mapVitalMarkerVOs(List<VitalMarkerModel> vitalMarkerModels) {
+		List<VitalMarker> vitalMarkerVOs = new ArrayList<>();
+		if (CollectionUtils.isNotEmpty(vitalMarkerModels)) {
+			for (VitalMarkerModel vitalMarkerModel : vitalMarkerModels) {
+				vitalMarkerVOs.add(mapVitalMarker(vitalMarkerModel));
+			}
+		}
+		return vitalMarkerVOs;
+	}
+
+	public static Page<VitalMarker> mapVitalMarkerPages(Page<VitalMarkerModel> vitalMarkersModelPage) {
+		List<VitalMarker> vitalMarkerVOs = new ArrayList<>();
+		if (CollectionUtils.isNotEmpty(vitalMarkersModelPage.getContent())) {
+			for (VitalMarkerModel vitalMarkerModel : vitalMarkersModelPage.getContent()) {
+				vitalMarkerVOs.add(mapVitalMarker(vitalMarkerModel));
+			}
+		}
+		return new PageImpl<VitalMarker>(vitalMarkerVOs, vitalMarkersModelPage.getPageable(),
+				vitalMarkersModelPage.getTotalElements());
+	}

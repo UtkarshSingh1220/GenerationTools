@@ -1,0 +1,13 @@
+		errorMap.put(56300L, "VitalMarker found for the generated vitalMarkerId: {0}!");
+		errorMap.put(56301L, "Unable to create/update VitalMarker");
+		errorMap.put(56302L, "VitalMarker not found for the given vitalMarkerId: {0}!");
+		errorMap.put(56303L, "Unable to retrieve VitalMarker for the given vitalMarkerId: {0}!");
+		errorMap.put(56304L, "No VitalMarker found for the given search criteria");
+		errorMap.put(56305L, "Unable to retrieve VitalMarker for the given parameters");
+		errorMap.put(56306L, "VitalMarker already deleted for the given vitalMarkerId: {0}!");
+		errorMap.put(56307L, "Unable to deleted VitalMarker for the given vitalMarkerId: {0}!");
+		errorMap.put(56308L, MSG);
+		errorMap.put(56309L, "VitalMarkers not found for the given vitalMarkerIds: {0}!");
+		errorMap.put(56310L, "The following VitalMarkerIds: {0} records are missing!");
+		errorMap.put(56311L, "Unable to retrieve VitalMarker for the given vitalMarkerIds: {0}!");
+		errorMap.put(56312L, "VitalMarker already exists for the given vitalMarkerName: {0}!");

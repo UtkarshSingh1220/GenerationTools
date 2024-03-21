@@ -1,0 +1,13 @@
+	@ExceptionHandler(VitalMarkerException.class)
+	public ResponseEntity<GenericExceptionVO> vitalMarkerException(VitalMarkerException ex,
+			WebRequest request) {
+		String errorMsg = ErrorUtils.getErrorString(ex);
+		return new ResponseEntity<>(new GenericExceptionVO(ex.getErrorCode(), errorMsg), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler(VitalMarkerNotFoundException.class)
+	public ResponseEntity<GenericExceptionVO> vitalMarkerNotFoundException(VitalMarkerNotFoundException ex,
+			WebRequest request) {
+		String errorMsg = ErrorUtils.getErrorString(ex);
+		return new ResponseEntity<>(new GenericExceptionVO(ex.getErrorCode(), errorMsg), HttpStatus.NOT_FOUND);
+	}

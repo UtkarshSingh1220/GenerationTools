@@ -1,0 +1,13 @@
+		errorMap.put({{BASE_ERROR_CODE}}+0L, "{{VONAME}} found for the generated {{VONAME_CAMELCASE}}Id: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+1L, "Unable to create/update {{VONAME}}");
+		errorMap.put({{BASE_ERROR_CODE}}+2L, "{{VONAME}} not found for the given {{VONAME_CAMELCASE}}Id: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+3L, "Unable to retrieve {{VONAME}} for the given {{VONAME_CAMELCASE}}Id: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+4L, "No {{VONAME}} found for the given search criteria");
+		errorMap.put({{BASE_ERROR_CODE}}+5L, "Unable to retrieve {{VONAME}} for the given parameters");
+		errorMap.put({{BASE_ERROR_CODE}}+6L, "{{VONAME}} already deleted for the given {{VONAME_CAMELCASE}}Id: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+7L, "Unable to deleted {{VONAME}} for the given {{VONAME_CAMELCASE}}Id: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+8L, MSG);
+		errorMap.put({{BASE_ERROR_CODE}}+9L, "{{VONAME}}s not found for the given {{VONAME_CAMELCASE}}Ids: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+10L, "The following {{VONAME}}Ids: {0} records are missing!");
+		errorMap.put({{BASE_ERROR_CODE}}+11L, "Unable to retrieve {{VONAME}} for the given {{VONAME_CAMELCASE}}Ids: {0}!");
+		errorMap.put({{BASE_ERROR_CODE}}+12L, "{{VONAME}} already exists for the given {{VONAME_CAMELCASE}}Name: {0}!");

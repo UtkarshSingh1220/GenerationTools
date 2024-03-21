@@ -1,0 +1,13 @@
+	@ExceptionHandler({{VONAME}}Exception.class)
+	public ResponseEntity<GenericExceptionVO> {{VONAME_CAMELCASE}}Exception({{VONAME}}Exception ex,
+			WebRequest request) {
+		String errorMsg = ErrorUtils.getErrorString(ex);
+		return new ResponseEntity<>(new GenericExceptionVO(ex.getErrorCode(), errorMsg), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler({{VONAME}}NotFoundException.class)
+	public ResponseEntity<GenericExceptionVO> {{VONAME_CAMELCASE}}NotFoundException({{VONAME}}NotFoundException ex,
+			WebRequest request) {
+		String errorMsg = ErrorUtils.getErrorString(ex);
+		return new ResponseEntity<>(new GenericExceptionVO(ex.getErrorCode(), errorMsg), HttpStatus.NOT_FOUND);
+	}

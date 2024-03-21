@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<property name="LOG_FILE_NAME" value="karkinos-case-mgmt-service" />
+	<property name="LOG_FILE_NAME" value="karkinos-notification" />
+	<property name="LOG_FILE_NAME" value="karkinos-case-mgmt-service" />
+	
+	<property name="HOME_LOG" value="logs/" />
+	
+		<appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+			<file>${HOME_LOG}${LOG_FILE_NAME}.log</file>
+			
+			<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>logs/archived/${LOG_FILE_NAME}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+				<!-- each archived file, size max 10MB -->
+				<maxFileSize>10MB</maxFileSize>
+				<!-- total size of all archive files, if total size > 20GB, it will delete old archived
+					file -->
+				<totalSizeCap>5GB</totalSizeCap>
+				<!-- 60 days to keep -->
+				<maxHistory>60</maxHistory>
+			</rollingPolicy>
+			
+			<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+				<layout class="com.karkinos.logging.MaskingPatternLayout">
+					<patternsProperty>
+						([^\w][6-9][0-9]{9}[^\w])|([^\w]\d{6}[^\w])|([a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+)
+					</patternsProperty>
+					<pattern>%d %p %c{1.} "TraceID:" [%X{traceid}] [%t] %m%n</pattern>
+				</layout>
+			</encoder>
+		</appender>
+		
+		<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+				<layout class="com.karkinos.logging.MaskingPatternLayout">
+					<patternsProperty>
+						([^\w][6-9][0-9]{9}[^\w])|([^\w]\d{6}[^\w])|([a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+)
+					</patternsProperty>
+					<Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
+				</layout>
+			</encoder>
+		</appender>
+		
+		<logger name="com.karkinos" level="warn" additivity="false">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE-ROLLING" />
+		</logger>
+		<logger name="org.springframework" level="warn" additivity="false">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE-ROLLING" />
+		</logger>
+		<root level="warn">
+			<appender-ref ref="CONSOLE" />
+			<appender-ref ref="FILE-ROLLING" />
+		</root>
+	
+</configuration>
